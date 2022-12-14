@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta id="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="#" />
+        <style>
+            body {
+                background-color: rgb(210, 210, 210);
+            }
+            form {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                color: rgb(224, 224, 224);
+                font-size: 120%;
+                width: 50vw;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: rgb(48, 48, 48);
+                border-radius: 20px;
+                padding: 50px;
+                box-shadow: 10px 10px 20px #474747;
+            }
+            input {
+                background-color: rgb(37, 37, 37);
+                color: rgb(181, 181, 181);
+                font-size: 100%;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                border: none;
+                border-bottom: solid 1px;
+            }
+
+            button {
+                width: 200px;
+                height: 50px;
+                border-radius: 10px;
+                font-size: 130%;
+                background-color: rgb(195, 195, 195);
+            }
+            button:hover {
+                background-color: rgb(230, 230, 230);
+            }
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        <title>Ayush Karn</title>
+    </head>
+    <body>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" />
+            <br />
+            <label for="pass">Password</label>
+            <input type="password" id="pass" />
+            <br />
+            <label for="date">Date</label>
+            <input type="date" id="date" />
+            <br />
+            <table>
+                <tr>
+                    <td>
+                        <div class="game">
+                            <p>Indoor Games</p>
+                            <input
+                                type="checkbox"
+                                id="indoor1"
+                                value="chess"
+                                class="indoor"
+                            />
+                            <label for="indoor1">Chess</label><br />
+                            <input
+                                type="checkbox"
+                                id="indoor2"
+                                value="Table_tennis"
+                                class="indoor"
+                            />
+                            <label for="indoor2">Table Tennis</label><br />
+                            <input
+                                type="checkbox"
+                                id="indoor3"
+                                value="badminton"
+                                class="indoor"
+                            />
+                            <label for="indoor3">Badminton</label><br />
+                            <input
+                                type="checkbox"
+                                id="indoor4"
+                                value="else"
+                                class="indoor"
+                            />
+                            <label for="indoor4">Something else</label>
+                            <br />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="game">
+                            <p>Outdoor Games</p>
+                            <input
+                                type="checkbox"
+                                id="outdoor1"
+                                value="cricket"
+                                class="outdoor"
+                            />
+                            <label for="outdoor1">Cricket</label><br />
+                            <input
+                                type="checkbox"
+                                id="outdoor2"
+                                value="football"
+                                class="outdoor"
+                            />
+                            <label for="outdoor2">Football</label><br />
+                            <input
+                                type="checkbox"
+                                id="outdoor3"
+                                value="lawn_tennis"
+                                class="outdoor"
+                            />
+                            <label for="outdoor3">Lawn Tennis</label><br />
+                            <input
+                                type="checkbox"
+                                id="outdoor4"
+                                value="else"
+                                class="outdoor"
+                            />
+                            <label for="outdoor4">Something else</label>
+                            <br />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div>
+                <p>Year</p>
+                <input type="radio" name="year" value="1" id="fyear" />
+                <label for="fyear">First Year</label><br />
+                <input type="radio" name="year" value="2" id="syear" />
+                <label for="syear">Second Year</label><br />
+                <input type="radio" name="year" value="3" id="tyear" />
+                <label for="tyear">Third Year</label><br />
+            </div>
+            <p id="error" class="center" style="color: red"></p>
+            <button type="submit" id="submit" class="center">Submit</button>
+        </form>
+        <script>
+            let err = document.getElementById("error");
+            document.getElementById("submit").onclick = function (e) {
+                let valid = 6;
+                document.getElementById("error").innerHTML = "";
+
+                //validate name
+                let n = 0;
+                let name = document.getElementById("name").value;
+                if (name.length <= 5 || name.length >= 11) {
+                    n = 1;
+                }
+                let name_arr = name.split(" ");
+                for (let i = 0; i < name_arr.length; i++) {
+                    if (name_arr[i] == "" || n == 1) {
+                        err.innerHTML += "Invalid Name, ";
+                        valid--;
+                        break;
+                    }
+                }
+
+                //validate password
+                let c = 0;
+                let pass = document.getElementById("pass").value;
+                if (pass.length < 8) {
+                    valid--;
+                    err.innerHTML += "Password too short, ";
+                } else {
+                    for (let i = 0; i < pass.length; i++) {
+                        if (pass.charAt(i) >= "A" && pass.charAt(i) <= "Z") {
+                            c++;
+                            break;
+                        }
+                    }
+                    for (let i = 0; i < pass.length; i++) {
+                        if (pass.charAt(i) >= "a" && pass.charAt(i) <= "z") {
+                            c++;
+                            break;
+                        }
+                    }
+                    for (let i = 0; i < pass.length; i++) {
+                        if (pass.charAt(i) >= "0" && pass.charAt(i) <= "9") {
+                            c++;
+                            break;
+                        }
+                    }
+                    for (let i = 0; i < pass.length; i++) {
+                        if (
+                            pass.charAt(i) == "@" ||
+                            pass.charAt(i) == "#" ||
+                            pass.charAt(i) == "$"
+                        ) {
+                            c++;
+                            break;
+                        }
+                    }
+                    if (c != 4) {
+                        valid--;
+                        err.innerHTML += "Invalid password, ";
+                    }
+                }
+
+                //validate date
+                let date1 = document.getElementById("date").value;
+                date = new Date(date1).getTime();
+                let l = new Date("1/1/2000").getTime();
+                let h = new Date("12/31/2010").getTime();
+                if (date >= l && date <= h) err.innerHTML += "";
+                else {
+                    valid--;
+                    err.innerHTML += "Invalid Date, ";
+                }
+
+                //validating check
+                let check_o = 0;
+                if (document.getElementById("outdoor1").checked) check_o++;
+                if (document.getElementById("outdoor2").checked) check_o++;
+                if (document.getElementById("outdoor3").checked) check_o++;
+                if (document.getElementById("outdoor4").checked) check_o++;
+                if (check_o != 1) {
+                    valid--;
+                    err.innerHTML += "Check only 1 in outdoor games, ";
+                }
+                let check_i = 0;
+                if (document.getElementById("indoor1").checked) check_i++;
+                if (document.getElementById("indoor2").checked) check_i++;
+                if (document.getElementById("indoor3").checked) check_i++;
+                if (document.getElementById("indoor4").checked) check_i++;
+                if (check_i != 1) {
+                    valid--;
+                    err.innerHTML += "Check only 1 in indoor games, ";
+                }
+
+                // validating radio
+                let check_r = 0;
+                var getSelectedValue = document.querySelector(
+                    'input[name="year"]:checked'
+                );
+                if (getSelectedValue == null) {
+                    valid--;
+                    err.innerHTML += "Select year, ";
+                }
+
+                //printing data
+                if (valid == 6) {
+                    console.log("Name: ", name);
+                    console.log("Password: ", pass);
+                    console.log("Date: ", date1);
+                    let ind = document.getElementsByClassName("indoor");
+                    for (let i = 0; i < ind.length; i++)
+                        if (ind[i].checked)
+                            console.log("Indoor Game: ", ind[i].value);
+                    let out = document.getElementsByClassName("outdoor");
+                    for (let i = 0; i < out.length; i++)
+                        if (out[i].checked)
+                            console.log("Outdoor Game: ", out[i].value);
+                    console.log("Year: ", getSelectedValue.value);
+                }
+                e.preventDefault();
+            };
+        </script>
+    </body>
+</html>

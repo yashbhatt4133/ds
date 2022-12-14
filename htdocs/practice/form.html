@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Student Info</title>
+    </head>
+    <body>
+        <form action="./report.php" method="post" onsubmit="return validateForm()">
+            <p>
+                Name:<span id="errname" class="error"></span><br />
+                <input type="text" name="name" id="name" />
+            </p>
+            <p>
+                Roll:<span id="errroll" class="error"></span><br />
+                <input type="text" name="roll" id="roll" />
+            </p>
+            <p>
+                Email:<span id="erremail" class="error"></span><br />
+                <input type="email" name="email" id="email" />
+            </p>
+            <p>
+                Age:<span id="errage" class="error"></span><br />
+                <input type="number" name="age" id="age" />
+            </p>
+            <p>
+                Gender:<br />
+                <input type="radio" name="gender" value="male" /> Male<br />
+                <input type="radio" name="gender" value="female" /> Female<br />
+                <input type="radio" name="gender" value="other" /> Other<br />
+            </p>
+            <p>
+                Societies:</span><br />
+                <input type="checkbox" name="society[]" value="raaga" />
+                Raaga<br />
+                <input type="checkbox" name="society[]" value="sangyaan" />
+                Sangyaan<br />
+                <input type="checkbox" name="society[]" value="polaroid" />
+                polaroid<br />
+            </p>
+            <p>
+                Course:<br />
+                <select name="course" id="course">
+                    <option value="cs">BSc. (H) Computer Science</option>
+                    <option value="maths">BSc. (H) Maths</option>
+                    <option value="eng">B.A. (H) English</option>
+                    <option value="mts">BSc. Mathematical Science</option>
+                </select>
+            </p>
+            <p>
+                Address:<span id="erraddress" class="error"></span><br />
+                <textarea value="address" name="address" id="address"> </textarea>
+            </p>
+            <p>
+                Photo:<br />
+                <input type="file" value="photo" name="photo" id="photo" />
+            </p>
+            <button type="submit" id="btn">SUBMIT</button>
+        </form>
+        <script src="./script.js"></script>
+    </body>
+</html>

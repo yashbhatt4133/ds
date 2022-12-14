@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p id="pattern" style="font-family: monospace; font-size: 20px"></p>
+        <script>
+            let para = document.getElementById("pattern");
+            for (let i = 4; i >= 1; i--) {
+                for (let j = 1; j <= i; j++) {
+                    para.innerHTML += "*&nbsp;";
+                }
+                for (let j = 0; j < (4 - i) * 2; j++) {
+                    para.innerHTML += "&nbsp;&nbsp;";
+                }
+                for (let j = 1; j <= i; j++) {
+                    para.innerHTML += "*&nbsp;";
+                }
+                para.innerHTML += "<br/>";
+            }
+            for (let i = 1; i <= 4; i++) {
+                for (let j = 1; j <= i; j++) {
+                    para.innerHTML += "*&nbsp;";
+                }
+                for (let j = 0; j < (4 - i) * 2; j++) {
+                    para.innerHTML += "&nbsp;&nbsp;";
+                }
+                for (let j = 1; j <= i; j++) {
+                    para.innerHTML += "*&nbsp;";
+                }
+                para.innerHTML += "<br/>";
+            }
+        </script>
+    </body>
+</html>
+<!-- 
+4-0   
+3-2   
+2-4   
+1-6
+********
+***  ***
+**    **
+*      *
+**    **
+***  ***
+******** 
+-->
